@@ -28,7 +28,7 @@ public class Medico {
 	private Especialidade especialidade;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}
@@ -36,16 +36,18 @@ public class Medico {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
+	/* definindo que o campo nao pode ser nulo */
 	@NotNull
 	public Boolean getAtivo() {
 		return ativo;
 	}
-	
+
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
-	
+
+	/* definindo que o campo nao pode ser nulo */
 	@NotNull
 	public Boolean getOcupado() {
 		return ocupado;
@@ -55,8 +57,13 @@ public class Medico {
 		this.ocupado = ocupado;
 	}
 
+	/*
+	 * definindo que o campo nao pode ser nulo e nem ser preenchido com espacos /
+	 * renomeando nome da coluna
+	 */
 	@NotBlank
-	@Column(name="primeiro_nome")
+
+	@Column(name = "primeiro_nome")
 	public String getPrimeiroNome() {
 		return primeiroNome;
 	}
@@ -64,9 +71,10 @@ public class Medico {
 	public void setPrimeiroNome(String primeiroNome) {
 		this.primeiroNome = primeiroNome;
 	}
-	
+
+	/* definindo que o campo nao pode ser nulo e nem ser preenchido com espacos */
 	@NotBlank
-	@Column(name="ultimo_nome")
+	@Column(name = "ultimo_nome")
 	public String getUltimoNome() {
 		return ultimoNome;
 	}
@@ -75,16 +83,17 @@ public class Medico {
 		this.ultimoNome = ultimoNome;
 	}
 
+	/* definindo como o enum será salvo */
 	@Enumerated(EnumType.STRING)
 	public Estado getEstado() {
 		return estado;
 	}
 
-	
 	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
 
+	/* definindo que o campo nao pode ser nulo e nem ser preenchido com espacos */
 	@NotBlank
 	public String getEmail() {
 		return email;
@@ -94,8 +103,9 @@ public class Medico {
 		this.email = email;
 	}
 
+	/* mapeando o relacionamento e renomeando o nome da coluna */
 	@ManyToOne
-	@JoinColumn(name="id_especialidade")
+	@JoinColumn(name = "id_especialidade")
 	public Especialidade getEspecialidade() {
 		return especialidade;
 	}

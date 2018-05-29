@@ -26,9 +26,12 @@ public class MedicoRepositoryImpl implements MedicoRepositoryQuery {
 	@PersistenceContext
 	private EntityManager manager;
 
+	/*metodo que efetua a consulta de medicos com filtros com criteria*/
+	
 	@Override
 	public List<Medico> filtrar(MedicoFilter medicoFilter, Pageable pageable) {
 		
+		//Criando a estrutura da consulta
 		CriteriaBuilder builder = manager.getCriteriaBuilder();
 		CriteriaQuery<Medico> criteria = builder.createQuery(Medico.class);
 		Root<Medico> root = criteria.from(Medico.class);
@@ -43,6 +46,8 @@ public class MedicoRepositoryImpl implements MedicoRepositoryQuery {
 		return new PageImpl<>(query.getResultList()).getContent();
 	}
 
+	/*Adicionando restricoes as consultas OBS (sao todas opcionais)*/
+	
 	private Predicate[] criarRestricoes(CriteriaBuilder builder, MedicoFilter medicoFilter, Root<Medico> root) {
 		List<Predicate> predicates = new ArrayList<>();
 		
@@ -61,6 +66,8 @@ public class MedicoRepositoryImpl implements MedicoRepositoryQuery {
 		return predicates.toArray(new Predicate[predicates.size()]);
 	}
 	
+	//Adicionando Paginacao na consulta
+	
 	private void adiicionarRestricaoPaginacao(TypedQuery<Medico> query, Pageable pageable) {
 		int paginaAtual = pageable.getPageNumber();
 		int totalRegistrosPogPagina = pageable.getPageSize();
@@ -72,6 +79,8 @@ public class MedicoRepositoryImpl implements MedicoRepositoryQuery {
 		
 	}
 
+	//Adicionando ordenacao
+	
 	private void adicionarOrdenacao(Pageable pageable, CriteriaBuilder builder, CriteriaQuery<Medico> criteria,
 			Root<Medico> root) {
 		Sort sort = pageable.getSort();

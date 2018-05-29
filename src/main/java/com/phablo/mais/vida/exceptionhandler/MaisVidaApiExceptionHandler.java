@@ -22,12 +22,15 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+/*classe usada para o tratamento de execoes */
+
 @ControllerAdvice
 public class MaisVidaApiExceptionHandler extends  ResponseEntityExceptionHandler {
 	
 	@Autowired
 	private MessageSource messageSource;
 	
+	/* lanca uma excecao quando se tenta inserir um dado invalido e uma mensagem para o usuario / dev  */
 	@Override
 	protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
@@ -37,6 +40,7 @@ public class MaisVidaApiExceptionHandler extends  ResponseEntityExceptionHandler
 		return handleExceptionInternal(ex, erros, headers, HttpStatus.BAD_REQUEST, request);
 	}
 	
+	/* lanca uma excecao quando algum campo deixa de ser preenchido e uma mensagem para o usuario / dev  */
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
@@ -44,6 +48,7 @@ public class MaisVidaApiExceptionHandler extends  ResponseEntityExceptionHandler
 		return handleExceptionInternal(ex, erros, headers, HttpStatus.BAD_REQUEST, request);
 	}
 	
+	/* lanca uma excecao quando nao se enccontra um recurso e uma mensagem para o usuario / dev */
 	@ExceptionHandler(EmptyResultDataAccessException.class)
 	public ResponseEntity<Object> emptyResultDataAccessException (EmptyResultDataAccessException ex,WebRequest request) {
 		
@@ -55,6 +60,7 @@ public class MaisVidaApiExceptionHandler extends  ResponseEntityExceptionHandler
 		
 	}
 	
+	/*lanca uma excecao quando se viola alguma constraint do BD e uma mensagem para o usuario / dev */
 	@ExceptionHandler(DataIntegrityViolationException.class)
 	public ResponseEntity<Object> handleDataIntegrityViolationException(DataIntegrityViolationException ex,WebRequest request){
 		String mensagemUsuario = messageSource.getMessage("operacao-nao-permitida", null, LocaleContextHolder.getLocale());
@@ -64,6 +70,7 @@ public class MaisVidaApiExceptionHandler extends  ResponseEntityExceptionHandler
 		return handleExceptionInternal(ex, erros, new HttpHeaders(), HttpStatus.BAD_REQUEST, request); 
 	}
 	
+	/* metodo que captura todos erros */
 	private List<Erro> criarListaErros(BindingResult resultado){
 		
 		List<Erro> erros = new ArrayList<>();
@@ -76,6 +83,8 @@ public class MaisVidaApiExceptionHandler extends  ResponseEntityExceptionHandler
 		
 		return erros;
 	}
+	
+	/*classe estatica para manipular as mensagens de erro*/
 	public static class Erro{
 		
 

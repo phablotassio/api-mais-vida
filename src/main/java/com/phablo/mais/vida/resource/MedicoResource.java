@@ -35,22 +35,33 @@ public class MedicoResource {
 	@Autowired
 	private MedicoService medicoService;
 	
+	/*Criando recurso */
+	
 	@PostMapping
 	public ResponseEntity<Medico> salvar(@Valid @RequestBody Medico medico){
+		/*salvando recurso*/
 		
 		Medico medicoSalvo = medicoRepository.save(medico);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(medicoSalvo.getId()).toUri();
 		
+		/*retorna o recurso no body da requisicao, a uri correspondente do mesmo no header e 201 created*/
+		
 		return ResponseEntity.created(uri).body(medicoSalvo);
 	}
+	
+	//Buscando recurso pelo id 
+	/*se o recurso foi encontrado retorna 200 ok e o recurso, se nao retorna 404 not found*/
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Medico> buscarPeloId(@PathVariable Long id){
 		
 		Medico medico = medicoService.buscarPeloId(id);
 		
+		
 		return ResponseEntity.ok(medico);
 	}
+	
+	//Buscando e filtrando recursos
 	
 	@GetMapping()
 	public List<Medico> listarTodos(MedicoFilter medicoFilter,Pageable pageable){
@@ -61,6 +72,9 @@ public class MedicoResource {
 		
 	}
 	
+	//Atualizando recurso
+	/* se o recuso for encontrado, ele será atualizado e retornara no body da requesicao com o status 200 ok, caso contrario retornara 404 not found*/
+	
 	@PutMapping("/{id}")
 	public ResponseEntity<Medico> atualizar (@PathVariable Long id,@Valid @RequestBody Medico medico){
 		
@@ -69,6 +83,10 @@ public class MedicoResource {
 		
 		return ResponseEntity.ok().body(medicoSalvo);
 	}
+	
+	//Apagando Recurso
+	/*se o recurso foi encontrado retorna 204 no content, caso contrario retorna 404 not found*/
+	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete (@PathVariable Long id) {

@@ -19,13 +19,29 @@ public class EspecialidadeService {
 	private EspecialidadeRepository especialidadeRepository;
 	
 	
+	public Especialidade buscarPeloId(Long id) {
+		
+		/*buscando a especialidade pelo id*/
+		Especialidade especialidade = especialidadeRepository.findOne(id);
+		
+		if(especialidade == null) {
+			/* se a especialidade nao for encontra lanca uma excecao e um  aviso: recurso nao encontrado*/
+			throw new EmptyResultDataAccessException(1);
+			
+		}
+		
+		
+		return especialidade;
+	}
+	
 	public List<Especialidade> buscarComFiltro(String descricao, Pageable pageable){
 		
 		List<Especialidade> especialidades ;
-		
+		/*se a descricao for nula nao adiciona nenhum filtro*/
 		if(StringUtils.isEmpty(descricao)) {
 			especialidades = especialidadeRepository.findAll(pageable).getContent();
 		}else {
+			/*Filtrando pela descricao */
 			especialidades = especialidadeRepository.findByDescricaoStartingWith(descricao,pageable);
 		}
 		
@@ -37,23 +53,12 @@ public class EspecialidadeService {
 	public Especialidade atualizar(Long id, Especialidade especialidade) {
 		
 		Especialidade especialidadeSalva = buscarPeloId(id);
+		/*Atualizando o recurso*/
 		BeanUtils.copyProperties(especialidade, especialidadeSalva, "id");
 		especialidadeRepository.save(especialidadeSalva);
 		
 		return especialidadeSalva;
 	}
-	
-	public Especialidade buscarPeloId(Long id) {
-		
-		Especialidade especialidade = especialidadeRepository.findOne(id);
-		
-		if(especialidade == null) {
-			throw new EmptyResultDataAccessException(1);
-			
-		}
-		
-		
-		return especialidade;
-	}
+
 
 }

@@ -2,6 +2,8 @@ package com.phablo.mais.vida.repository.filter;
 
 public class MedicoFilter {
 	
+	/*Filtro que sera utilizado na query dos medicos*/
+	
 	private String primeiroNome;
 	private String ultimoNome;
 	private String especialidade;
