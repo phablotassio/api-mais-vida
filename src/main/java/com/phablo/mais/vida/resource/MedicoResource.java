@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.phablo.mais.vida.model.Medico;
 import com.phablo.mais.vida.repository.MedicoRepository;
+import com.phablo.mais.vida.repository.filter.MedicoFilter;
 import com.phablo.mais.vida.service.MedicoService;
 
 @RestController
@@ -51,9 +53,9 @@ public class MedicoResource {
 	}
 	
 	@GetMapping()
-	public List<Medico> listarTodos(){
+	public List<Medico> listarTodos(MedicoFilter medicoFilter,Pageable pageable){
 		
-		List<Medico> medicos = medicoRepository.findAll();
+		List<Medico> medicos = medicoRepository.filtrar(medicoFilter, pageable);
 		
 		return medicos;
 		

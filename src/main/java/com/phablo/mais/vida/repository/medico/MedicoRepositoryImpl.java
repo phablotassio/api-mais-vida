@@ -11,7 +11,9 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.util.StringUtils;
 
 import com.phablo.mais.vida.model.Especialidade_;
@@ -32,11 +34,13 @@ public class MedicoRepositoryImpl implements MedicoRepositoryQuery {
 		Root<Medico> root = criteria.from(Medico.class);
 		Predicate [] predicates = criarRestricoes(builder,medicoFilter,root);
 		criteria.where(predicates);
+		adicionarOrdenacao(pageable, builder, criteria, root);
 		
 		TypedQuery<Medico> query = manager.createQuery(criteria);
+		adiicionarRestricaoPaginacao(query,pageable);
 		
 		
-		return query.getResultList();
+		return new PageImpl<>(query.getResultList()).getContent();
 	}
 
 	private Predicate[] criarRestricoes(CriteriaBuilder builder, MedicoFilter medicoFilter, Root<Medico> root) {
@@ -55,6 +59,27 @@ public class MedicoRepositoryImpl implements MedicoRepositoryQuery {
 		}
 		
 		return predicates.toArray(new Predicate[predicates.size()]);
+	}
+	
+	private void adiicionarRestricaoPaginacao(TypedQuery<Medico> query, Pageable pageable) {
+		int paginaAtual = pageable.getPageNumber();
+		int totalRegistrosPogPagina = pageable.getPageSize();
+		int primeiroRegistroPagina = paginaAtual * totalRegistrosPogPagina;
+		
+		query.setFirstResult(primeiroRegistroPagina);
+		query.setMaxResults(totalRegistrosPogPagina);
+		
+		
+	}
+
+	private void adicionarOrdenacao(Pageable pageable, CriteriaBuilder builder, CriteriaQuery<Medico> criteria,
+			Root<Medico> root) {
+		Sort sort = pageable.getSort();
+		if (sort != null) {
+			Sort.Order order = sort.iterator().next();
+			String field = order.getProperty();
+			criteria.orderBy(order.isAscending() ? builder.asc(root.get(field)) : builder.desc(root.get(field)));
+		}
 	}
 
 }
