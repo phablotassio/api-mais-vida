@@ -1,9 +1,14 @@
 package com.phablo.mais.vida.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.phablo.mais.vida.model.Especialidade;
 import com.phablo.mais.vida.repository.EspecialidadeRepository;
@@ -13,6 +18,21 @@ public class EspecialidadeService {
 	
 	@Autowired
 	private EspecialidadeRepository especialidadeRepository;
+	
+	
+	public List<Especialidade> buscarComFiltro(String descricao, Pageable pageable){
+		
+		List<Especialidade> especialidades ;
+		
+		if(StringUtils.isEmpty(descricao)) {
+			especialidades = especialidadeRepository.findAll(pageable).getContent();
+		}else {
+			especialidades = especialidadeRepository.findByDescricaoStartingWith(descricao,pageable);
+		}
+		
+		return especialidades;
+		
+	}
 	
 
 	public Especialidade atualizar(Long id, Especialidade especialidade) {
