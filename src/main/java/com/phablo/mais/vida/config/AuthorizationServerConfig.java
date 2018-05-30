@@ -1,5 +1,4 @@
 package com.phablo.mais.vida.config;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,19 +17,34 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
-
+	
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.inMemory().withClient("ionic").secret("i0nic").scopes("read", "write")
-				.authorizedGrantTypes("password","refresh_token").accessTokenValiditySeconds(60).refreshTokenValiditySeconds(3600 * 24);
+		clients.inMemory()
+			.withClient("ionic")
+			.secret("i0nic")
+			.scopes("read", "write")
+			.authorizedGrantTypes("password", "refresh_token")
+			.accessTokenValiditySeconds(3600)
+			.refreshTokenValiditySeconds(3600 * 24)
+			.and()
+			.withClient("mobile")
+			.secret("mob1l3")
+			.scopes("read")
+			.authorizedGrantTypes("password", "refresh_token")
+			.accessTokenValiditySeconds(3600)
+			.refreshTokenValiditySeconds(3600 * 24);
 	}
-
+	
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-		endpoints.tokenStore(tokenStore()).accessTokenConverter(accessTokenConverter()).reuseRefreshTokens(false)
-				.authenticationManager(authenticationManager);
+		endpoints
+			.tokenStore(tokenStore())
+			.accessTokenConverter(accessTokenConverter())
+			.reuseRefreshTokens(false)
+			.authenticationManager(authenticationManager);
 	}
-
+	
 	@Bean
 	public JwtAccessTokenConverter accessTokenConverter() {
 		JwtAccessTokenConverter accessTokenConverter = new JwtAccessTokenConverter();
@@ -42,5 +56,5 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	public TokenStore tokenStore() {
 		return new JwtTokenStore(accessTokenConverter());
 	}
-
+	
 }

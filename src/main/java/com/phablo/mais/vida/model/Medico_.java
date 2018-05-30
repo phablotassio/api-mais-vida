@@ -11,11 +11,12 @@ public abstract class Medico_ {
 	public static volatile SingularAttribute<Medico, String> ultimoNome;
 	public static volatile SingularAttribute<Medico, String> primeiroNome;
 	public static volatile SingularAttribute<Medico, Boolean> ativo;
+	public static volatile SingularAttribute<Medico, String> cidade;
 	public static volatile SingularAttribute<Medico, Estado> estado;
 	public static volatile SingularAttribute<Medico, Especialidade> especialidade;
-	public static volatile SingularAttribute<Medico, Boolean> ocupado;
 	public static volatile SingularAttribute<Medico, Long> id;
 	public static volatile SingularAttribute<Medico, String> email;
+	public static volatile SingularAttribute<Medico, Status> status;
 
 }
 

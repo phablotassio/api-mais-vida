@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,9 +35,8 @@ public class EspecialidadeResource {
 	@Autowired
 	private EspecialidadeService especialidadeService;
 	
-	/*Criando recurso */
+
 	
-	@PostMapping 
 	private ResponseEntity<Especialidade> salvar(@Valid @RequestBody Especialidade especialidade){
 		/*salvando recurso*/
 		
@@ -49,6 +49,8 @@ public class EspecialidadeResource {
 		
 	}
 	
+
+	@PostMapping
 	//Atualizando recurso
 	/* se o recuso for encontrado, ele será atualizado e retornara no body da requisicaocom o status 200 ok, caso contrario retornara 404 not found*/
 	
@@ -61,8 +63,8 @@ public class EspecialidadeResource {
 		return ResponseEntity.ok(especialidadeSalva);
 	}
 	
+
 	//Buscando e filtrando recursos
-	
 	@GetMapping()
 	private List<Especialidade> buscarTodos(String descricao,Pageable pageable){
 		
@@ -72,6 +74,7 @@ public class EspecialidadeResource {
 		return  especialidades;
 	}
 	
+
 	//Buscando recurso pelo id
 	/*se o recurso foi encontrado retorna 204 no content, caso contrario retorna 404 not found*/
 	
@@ -83,6 +86,7 @@ public class EspecialidadeResource {
 		
 		return ResponseEntity.ok(especialidade);
 	}
+	
 	
 	//Apagando Recurso
 	/*se o recurso foi encontrado retorna 204 no content, se nao retorna 404 not found*/

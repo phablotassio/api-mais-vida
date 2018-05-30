@@ -20,12 +20,15 @@ public class Medico {
 
 	private Long id;
 	private Boolean ativo;
-	private Boolean ocupado;
+	private Status status;
 	private String primeiroNome;
 	private String ultimoNome;
 	private Estado estado;
 	private String email;
 	private Especialidade especialidade;
+	private String cidade;
+
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,15 +49,22 @@ public class Medico {
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
-
-	/* definindo que o campo nao pode ser nulo */
-	@NotNull
-	public Boolean getOcupado() {
-		return ocupado;
+	
+	@Enumerated(EnumType.STRING)
+	public Status getStatus() {
+		return status;
 	}
 
-	public void setOcupado(Boolean ocupado) {
-		this.ocupado = ocupado;
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
 	}
 
 	/*

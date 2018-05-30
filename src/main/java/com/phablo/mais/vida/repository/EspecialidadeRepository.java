@@ -10,6 +10,7 @@ import com.phablo.mais.vida.model.Especialidade;
 public interface EspecialidadeRepository extends JpaRepository<Especialidade, Long> {
 	
 	/*Filtrando especialidade com Spring data Jpa atraves da assinatura do metodo*/
+	
 	List<Especialidade> findByDescricaoStartingWith(String  descricao, Pageable pageable);
 
 	

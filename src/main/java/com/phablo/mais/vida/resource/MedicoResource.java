@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,6 +38,7 @@ public class MedicoResource {
 	
 	/*Criando recurso */
 	
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_MEDICO') and #oauth2.hasScope('write')")
 	@PostMapping
 	public ResponseEntity<Medico> salvar(@Valid @RequestBody Medico medico){
 		/*salvando recurso*/
@@ -52,6 +54,7 @@ public class MedicoResource {
 	//Buscando recurso pelo id 
 	/*se o recurso foi encontrado retorna 200 ok e o recurso, se nao retorna 404 not found*/
 	
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_MEDICO')and #oauth2.hasScope('read')")
 	@GetMapping("/{id}")
 	public ResponseEntity<Medico> buscarPeloId(@PathVariable Long id){
 		
@@ -62,7 +65,7 @@ public class MedicoResource {
 	}
 	
 	//Buscando e filtrando recursos
-	
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_MEDICO')and #oauth2.hasScope('read')")
 	@GetMapping()
 	public List<Medico> listarTodos(MedicoFilter medicoFilter,Pageable pageable){
 		
@@ -75,6 +78,7 @@ public class MedicoResource {
 	//Atualizando recurso
 	/* se o recuso for encontrado, ele será atualizado e retornara no body da requesicao com o status 200 ok, caso contrario retornara 404 not found*/
 	
+	@PreAuthorize("hasAuthority('ROLE_ATUALIZAR_MEDICO')and #oauth2.hasScope('write')")
 	@PutMapping("/{id}")
 	public ResponseEntity<Medico> atualizar (@PathVariable Long id,@Valid @RequestBody Medico medico){
 		
@@ -87,6 +91,7 @@ public class MedicoResource {
 	//Apagando Recurso
 	/*se o recurso foi encontrado retorna 204 no content, caso contrario retorna 404 not found*/
 	
+	@PreAuthorize("hasAuthority('ROLE_APAGAR_MEDICO')and #oauth2.hasScope('write')")
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete (@PathVariable Long id) {

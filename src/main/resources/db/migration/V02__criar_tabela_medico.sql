@@ -1,7 +1,8 @@
 CREATE TABLE medico (
     id int unsigned auto_increment,
     ativo BOOLEAN NOT NULL,
-    ocupado BOOLEAN NOT NULL,
+    status varchar(15) NOT NULL,
+    cidade varchar(50) not null,
     primeiro_nome varchar(50) not null,
     ultimo_nome varchar(50) not null,
     estado char(2) not null,
