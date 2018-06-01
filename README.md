@@ -21,8 +21,7 @@ na query acima se busca o medico pelo ultimo nome e já é passado os detalhes d
 as especialidades podem ser pesquisadas pelo nome 
 
 
-as requisicoes do postman já estão pré configuradas bastando apenas alterar o body
-
+as requisicoes do postman já estão pré configuradas bastando apenas alterar o body que estao localizdas na pasta Arquivos Postman
 
 
 

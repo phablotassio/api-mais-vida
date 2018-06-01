@@ -1,0 +1,506 @@
+{
+	"info": {
+		"_postman_id": "3c418373-6357-44ff-bf99-5cbae2b8bc6e",
+		"name": "Mais vida",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Exclusões",
+			"description": "",
+			"item": [
+				{
+					"name": "Especialidade",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1Mjc2MDkxNTYsInVzZXJfbmFtZSI6ImFkbWluQG1haXN2aWRhLmNvbSIsImF1dGhvcml0aWVzIjpbIlJPTEVfQVRVQUxJWkFSX0VTUEVDSUFMSURBREUiLCJST0xFX0NBREFTVFJBUl9FU1BFQ0lBTElEQURFIiwiUk9MRV9BUEFHQVJfTUVESUNPIiwiUk9MRV9DQURBU1RSQVJfTUVESUNPIiwiUk9MRV9QRVNRVUlTQVJfRVNQRUNJQUxJREFERSIsIlJPTEVfQVRVQUxJWkFSX01FRElDTyIsIlJPTEVfQVBBR0FSX0VTUEVDSUFMSURBREUiLCJST0xFX1BFU1FVSVNBUl9NRURJQ08iXSwianRpIjoiOTEwNzFhMDQtOTNkYS00MTg1LTlmZTItYWFlMDY4NDVmMTFlIiwiY2xpZW50X2lkIjoiaW9uaWMiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.oINIil-ioSqbfDKBa88DFBRUL_REZ5ydUNMXYeqMGXQ"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8084/especialidades/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"especialidades",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Medico",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1Mjc2NTU5ODksInVzZXJfbmFtZSI6Im1hcmlhQG1haXN2aWRhLmNvbSIsImF1dGhvcml0aWVzIjpbIlJPTEVfQVRVQUxJWkFSX0VTUEVDSUFMSURBREUiLCJST0xFX1BFU1FVSVNBUl9FU1BFQ0lBTElEQURFIiwiUk9MRV9DQURBU1RSQVJfRVNQRUNJQUxJREFERSIsIlJPTEVfQVBBR0FSX0VTUEVDSUFMSURBREUiLCJST0xFX1BFU1FVSVNBUl9NRURJQ08iXSwianRpIjoiZmU1ODM2NGItN2U1Mi00Y2NkLWFlMGItM2I5MWM3OWIxOWM1IiwiY2xpZW50X2lkIjoiaW9uaWMiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.8KGs4rXimi-a3N0r5qhiGz3LK7oZZBSnlhABDCSMUYo"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "localhost:8084/medicos/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"medicos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cadastros",
+			"description": "",
+			"item": [
+				{
+					"name": "Especialidade",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1Mjc2OTUyMjcsInVzZXJfbmFtZSI6Im1hcmlhQG1haXN2aWRhLmNvbSIsImF1dGhvcml0aWVzIjpbIlJPTEVfQVRVQUxJWkFSX0VTUEVDSUFMSURBREUiLCJST0xFX1BFU1FVSVNBUl9FU1BFQ0lBTElEQURFIiwiUk9MRV9DQURBU1RSQVJfRVNQRUNJQUxJREFERSIsIlJPTEVfQVBBR0FSX0VTUEVDSUFMSURBREUiLCJST0xFX1BFU1FVSVNBUl9NRURJQ08iXSwianRpIjoiY2UwNmI0MTUtMWY4Yy00NWFjLWFlNzItNzMzMTZhM2U5ZTJlIiwiY2xpZW50X2lkIjoiaW9uaWMiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.FygDPeHE8maQf8gCglGtqcY_SWOmW2O3jvdRtrhQZBU"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\n\t\"descricao\" : \"cardiologistaAAAA\"\n\t\n\t\n\t\n}"
+						},
+						"url": {
+							"raw": "localhost:8084/especialidades",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"especialidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Medico",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1Mjc2OTYzODIsInVzZXJfbmFtZSI6Im1hcmlhQG1haXN2aWRhLmNvbSIsImF1dGhvcml0aWVzIjpbIlJPTEVfQVRVQUxJWkFSX0VTUEVDSUFMSURBREUiLCJST0xFX1BFU1FVSVNBUl9FU1BFQ0lBTElEQURFIiwiUk9MRV9DQURBU1RSQVJfRVNQRUNJQUxJREFERSIsIlJPTEVfQVBBR0FSX0VTUEVDSUFMSURBREUiLCJST0xFX1BFU1FVSVNBUl9NRURJQ08iXSwianRpIjoiYzA5MTVjNzctYTQ5MS00MDVhLWE4NzYtYmU2YjNkODE4MzRiIiwiY2xpZW50X2lkIjoiaW9uaWMiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.LUKQoArjQs81Y6XwNYfJI4hCdVwmAF1PPsrSk6EPSE4"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"primeiroNome\" : \"Phablo\",\n\t\"ultimoNome\" : \"Oliveira\",\n\t\"estado\" : \"DF\",\n\t\"ativo\" : true,\n\t\"cidade\" : \"sobradinho\",\n\t\"email\" : \"phablo.tassio@gmail.com\",\n\t\"status\" : \"Disponivel\",\n\t\"especialidade\" : {\n\t\t\"id\" : 1\n\t}\n\t\n\n\t\n}"
+						},
+						"url": {
+							"raw": "localhost:8084/medicos",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"medicos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Atualizações",
+			"description": "",
+			"item": [
+				{
+					"name": "Especialidade",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1Mjc2MDcyNzAsInVzZXJfbmFtZSI6Im1hcmlhQG1haXN2aWRhLmNvbSIsImF1dGhvcml0aWVzIjpbIlJPTEVfQVRVQUxJWkFSX0VTUEVDSUFMSURBREUiLCJST0xFX1BFU1FVSVNBUl9FU1BFQ0lBTElEQURFIiwiUk9MRV9DQURBU1RSQVJfRVNQRUNJQUxJREFERSIsIlJPTEVfQVBBR0FSX0VTUEVDSUFMSURBREUiLCJST0xFX1BFU1FVSVNBUl9NRURJQ08iXSwianRpIjoiYWZmZWMyZWEtYmRiZS00ODcxLWFhZDQtNTQwNTg4YTVhMWUwIiwiY2xpZW50X2lkIjoiaW9uaWMiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.ibEpw4B4U7HpdGW7o7Z4RbnqoYCZZXiy0B-oUSmKHAw"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\n\t\"descricao\" : \"cardiologista\"\n\t\n\t\n\t\n}"
+						},
+						"url": {
+							"raw": "localhost:8084/especialidades/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"especialidades",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Medico",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1Mjc2MDg0MjYsInVzZXJfbmFtZSI6ImFkbWluQG1haXN2aWRhLmNvbSIsImF1dGhvcml0aWVzIjpbIlJPTEVfQVRVQUxJWkFSX0VTUEVDSUFMSURBREUiLCJST0xFX0NBREFTVFJBUl9FU1BFQ0lBTElEQURFIiwiUk9MRV9BUEFHQVJfTUVESUNPIiwiUk9MRV9DQURBU1RSQVJfTUVESUNPIiwiUk9MRV9QRVNRVUlTQVJfRVNQRUNJQUxJREFERSIsIlJPTEVfQVRVQUxJWkFSX01FRElDTyIsIlJPTEVfQVBBR0FSX0VTUEVDSUFMSURBREUiLCJST0xFX1BFU1FVSVNBUl9NRURJQ08iXSwianRpIjoiNGYwYjliMzYtMjg0OC00NzFhLWE3OWEtNDhjNDk5ZDBmZDVhIiwiY2xpZW50X2lkIjoiaW9uaWMiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.OryhATh7Xjm3oswsrIrouxraO__ZAsifAlOV1lnb3o4"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"primeiroNome\" : \"Phablozera\",\n\t\"ultimoNome\" : \"Oliveira\",\n\t\"estado\" : \"DF\",\n\t\"ativo\" : true,\n\t\"email\" : \"phablo.tassio@gmail.com\",\n\t\"ocupado\" : true,\n\t\"especialidade\" : {\n\t\t\"id\" : 1\n\t}\n\t\n\n\t\n}"
+						},
+						"url": {
+							"raw": "localhost:8084/medicos/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"medicos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Buscas",
+			"description": "",
+			"item": [
+				{
+					"name": "Especialidade",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1Mjc2OTYzODIsInVzZXJfbmFtZSI6Im1hcmlhQG1haXN2aWRhLmNvbSIsImF1dGhvcml0aWVzIjpbIlJPTEVfQVRVQUxJWkFSX0VTUEVDSUFMSURBREUiLCJST0xFX1BFU1FVSVNBUl9FU1BFQ0lBTElEQURFIiwiUk9MRV9DQURBU1RSQVJfRVNQRUNJQUxJREFERSIsIlJPTEVfQVBBR0FSX0VTUEVDSUFMSURBREUiLCJST0xFX1BFU1FVSVNBUl9NRURJQ08iXSwianRpIjoiYzA5MTVjNzctYTQ5MS00MDVhLWE4NzYtYmU2YjNkODE4MzRiIiwiY2xpZW50X2lkIjoiaW9uaWMiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.LUKQoArjQs81Y6XwNYfJI4hCdVwmAF1PPsrSk6EPSE4"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "localhost:8084/especialidades/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"especialidades",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Medico",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1Mjc2NTU0MDcsInVzZXJfbmFtZSI6ImFkbWluQG1haXN2aWRhLmNvbSIsImF1dGhvcml0aWVzIjpbIlJPTEVfQVRVQUxJWkFSX0VTUEVDSUFMSURBREUiLCJST0xFX0NBREFTVFJBUl9FU1BFQ0lBTElEQURFIiwiUk9MRV9BUEFHQVJfTUVESUNPIiwiUk9MRV9DQURBU1RSQVJfTUVESUNPIiwiUk9MRV9QRVNRVUlTQVJfRVNQRUNJQUxJREFERSIsIlJPTEVfQVRVQUxJWkFSX01FRElDTyIsIlJPTEVfQVBBR0FSX0VTUEVDSUFMSURBREUiLCJST0xFX1BFU1FVSVNBUl9NRURJQ08iXSwianRpIjoiMjg5NWQ0ODktZWIzMy00NjU0LWJlOWYtMzcyZTBiYzM5YzFlIiwiY2xpZW50X2lkIjoiaW9uaWMiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.brDBZRi5dU07ZjgJDnMk1lbUm3Fcr60aWXCDcRueQFg"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "localhost:8084/medicos/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"medicos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Buscas com filtro",
+			"description": "",
+			"item": [
+				{
+					"name": "Especialidade",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1Mjc2MDcyNzAsInVzZXJfbmFtZSI6Im1hcmlhQG1haXN2aWRhLmNvbSIsImF1dGhvcml0aWVzIjpbIlJPTEVfQVRVQUxJWkFSX0VTUEVDSUFMSURBREUiLCJST0xFX1BFU1FVSVNBUl9FU1BFQ0lBTElEQURFIiwiUk9MRV9DQURBU1RSQVJfRVNQRUNJQUxJREFERSIsIlJPTEVfQVBBR0FSX0VTUEVDSUFMSURBREUiLCJST0xFX1BFU1FVSVNBUl9NRURJQ08iXSwianRpIjoiYWZmZWMyZWEtYmRiZS00ODcxLWFhZDQtNTQwNTg4YTVhMWUwIiwiY2xpZW50X2lkIjoiaW9uaWMiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.ibEpw4B4U7HpdGW7o7Z4RbnqoYCZZXiy0B-oUSmKHAw"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "localhost:8084/especialidades?sort=descricao,desc&page=0&size=1&descricao=pedia",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"especialidades"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "descricao,desc"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "1"
+								},
+								{
+									"key": "descricao",
+									"value": "pedia"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Medico",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1Mjc2NTU0MDcsInVzZXJfbmFtZSI6ImFkbWluQG1haXN2aWRhLmNvbSIsImF1dGhvcml0aWVzIjpbIlJPTEVfQVRVQUxJWkFSX0VTUEVDSUFMSURBREUiLCJST0xFX0NBREFTVFJBUl9FU1BFQ0lBTElEQURFIiwiUk9MRV9BUEFHQVJfTUVESUNPIiwiUk9MRV9DQURBU1RSQVJfTUVESUNPIiwiUk9MRV9QRVNRVUlTQVJfRVNQRUNJQUxJREFERSIsIlJPTEVfQVRVQUxJWkFSX01FRElDTyIsIlJPTEVfQVBBR0FSX0VTUEVDSUFMSURBREUiLCJST0xFX1BFU1FVSVNBUl9NRURJQ08iXSwianRpIjoiMjg5NWQ0ODktZWIzMy00NjU0LWJlOWYtMzcyZTBiYzM5YzFlIiwiY2xpZW50X2lkIjoiaW9uaWMiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXX0.brDBZRi5dU07ZjgJDnMk1lbUm3Fcr60aWXCDcRueQFg"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "localhost:8084/medicos?ultimoNome=ol&page=0&size=2&sort=primeiroNome,desc",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"medicos"
+							],
+							"query": [
+								{
+									"key": "ultimoNome",
+									"value": "ol"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "2"
+								},
+								{
+									"key": "sort",
+									"value": "primeiroNome,desc"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f652fa7d-b05c-46e2-b6cf-4774c1d4fead",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "cc90c4a6-5266-463f-9750-3c381427f618",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Tokens",
+			"description": "",
+			"item": [
+				{
+					"name": "Gerar Token",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "i0nic",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "ionic",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "maria@maisvida.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "maria",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "client ",
+									"value": "i0nic",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8084/oauth/token",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Novo Acess Token com Refresh Token",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "ionic",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "i0nic",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "refresh_token",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8084/oauth/token",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
