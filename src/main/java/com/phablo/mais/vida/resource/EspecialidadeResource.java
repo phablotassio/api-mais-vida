@@ -36,8 +36,9 @@ public class EspecialidadeResource {
 	private EspecialidadeService especialidadeService;
 	
 
-	
-	private ResponseEntity<Especialidade> salvar(@Valid @RequestBody Especialidade especialidade){
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_ESPECIALIDADE') and #oauth2.hasScope('write')")
+	@PostMapping
+	public ResponseEntity<Especialidade> salvar(@Valid @RequestBody Especialidade especialidade){
 		/*salvando recurso*/
 		
 		Especialidade especialidadeSalva = especialidadeRepository.save(especialidade);
@@ -49,13 +50,12 @@ public class EspecialidadeResource {
 		
 	}
 	
-
-	@PostMapping
+	@PreAuthorize("hasAuthority('ROLE_ATUALIZAR_ESPECIALIDADE') and #oauth2.hasScope('write')")
 	//Atualizando recurso
 	/* se o recuso for encontrado, ele será atualizado e retornara no body da requisicaocom o status 200 ok, caso contrario retornara 404 not found*/
 	
 	@PutMapping("/{id}")
-	private ResponseEntity<Especialidade> atualizar(@PathVariable Long id,@Valid @RequestBody Especialidade especialidade){
+	public ResponseEntity<Especialidade> atualizar(@PathVariable Long id,@Valid @RequestBody Especialidade especialidade){
 		
 		Especialidade especialidadeSalva = especialidadeService.atualizar(id,especialidade);
 		
@@ -64,9 +64,10 @@ public class EspecialidadeResource {
 	}
 	
 
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_ESPECIALIDADE')and #oauth2.hasScope('read')")
 	//Buscando e filtrando recursos
 	@GetMapping()
-	private List<Especialidade> buscarTodos(String descricao,Pageable pageable){
+	public List<Especialidade> buscarTodos(String descricao,Pageable pageable){
 		
 		
 		List<Especialidade> especialidades = especialidadeService.buscarComFiltro(descricao,pageable);
@@ -75,11 +76,12 @@ public class EspecialidadeResource {
 	}
 	
 
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_ESPECIALIDADE')and #oauth2.hasScope('read')")
 	//Buscando recurso pelo id
 	/*se o recurso foi encontrado retorna 204 no content, caso contrario retorna 404 not found*/
 	
 	@GetMapping("/{id}")
-	private ResponseEntity<Especialidade> buscarPeloId(@PathVariable Long id){
+	public ResponseEntity<Especialidade> buscarPeloId(@PathVariable Long id){
 		
 		Especialidade especialidade = especialidadeService.buscarPeloId(id);
 		
@@ -88,6 +90,7 @@ public class EspecialidadeResource {
 	}
 	
 	
+	@PreAuthorize("hasAuthority('ROLE_APAGAR_ESPECIALIDADE')and #oauth2.hasScope('write')")
 	//Apagando Recurso
 	/*se o recurso foi encontrado retorna 204 no content, se nao retorna 404 not found*/
 	
